@@ -12,6 +12,7 @@
         "strict": true,
         "sourceMap": true,
         "declaration": true,
+        "moduleResolution": "node",
         "lib": ["es2015", "dom"],
         "declarationDir": "dist/types",
         "outDir": "dist/lib"
