@@ -12,11 +12,29 @@ const banner = `/*
  * Released under ${pkg.license} License
  */`;
 
+// transform "../../src/index.ts" (invalid) into "../src/index.ts"
+const sourcemapPathTransform = (sourcePath) => {
+    return sourcePath.substring('../'.length);
+};
+
 export default {
     input: `src/index.ts`,
     output: [
-        { file: pkg.main, name: pkg.name, format: 'umd', banner, sourcemap: true },
-        { file: pkg.module, format: 'esm', banner, sourcemap: true },
+        {
+            file: pkg.main,
+            name: pkg.name,
+            format: 'umd',
+            banner,
+            sourcemap: true,
+            sourcemapPathTransform,
+        },
+        {
+            file: pkg.module,
+            format: 'esm',
+            banner,
+            sourcemap: true,
+            sourcemapPathTransform,
+        },
     ],
     external: [],
     watch: {
